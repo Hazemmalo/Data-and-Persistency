@@ -33,7 +33,7 @@ public class Main {
 //                conn.close();
             }
         } catch (SQLException sqlex) {
-            System.err.println("[SQLException] 'typ hier een bericht'" + sqlex.getMessage());
+            System.err.println("[SQLException] 'Het ophalen van data is niet gelukt!'" + sqlex.getMessage());
         }
 
     }
