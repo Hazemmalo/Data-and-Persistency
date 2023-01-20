@@ -1,28 +1,29 @@
 package Domainklasse;
 
 public class Adres {
-    private int adres_id;
+    private int adresId;
     private String postcode;
     private String huisnummer;
     private String straat;
     private String woonplaats;
-    private int reiziger_id;
+    private int reizigerId;
 
-    public Adres (int ad_id, String poc, String hnm, String st, String wp, int rz_id){
-        adres_id = ad_id;
-        postcode = poc;
+
+    public Adres(int id_adres, String pscd, String hnm, String str, String wnpl, int id_reiziger){
+        adresId = id_adres;
+        postcode = pscd;
         huisnummer = hnm;
-        straat = st;
-        woonplaats = wp;
-        reiziger_id = rz_id;
+        straat = str;
+        woonplaats = wnpl;
+        reizigerId = id_reiziger;
     }
 
-    public int getAdres_id() {
-        return adres_id;
+    public int getAdresId() {
+        return adresId;
     }
 
-    public void setAdres_id(int adres_id) {
-        this.adres_id = adres_id;
+    public void setAdresId(int adresId) {
+        this.adresId = adresId;
     }
 
     public String getPostcode() {
@@ -57,16 +58,17 @@ public class Adres {
         this.woonplaats = woonplaats;
     }
 
-    public int getReiziger_id() {
-        return reiziger_id;
+    public int getReizigerId() {
+        return reizigerId;
     }
 
-    public void setReiziger_id(int reiziger_id) {
-        this.reiziger_id = reiziger_id;
+    public void setReizigerId(int reizigerId) {
+        this.reizigerId = reizigerId;
     }
 
-    public String toString() {
-        return "Id:" + " " + adres_id + " " + "Straatnaam:" + " " + straat + " " + "Huisnummer:" + " " + huisnummer +
-                " " + "Postcode:" + " " + postcode + " " + "Woonplaats:" + " " + woonplaats + " " + "Reizigerid:" + reiziger_id;
+    public String toString(){
+        String s = "Adresid: " + adresId + ", Postcode: " + postcode + ", Huisnummer: " + huisnummer +
+                ", Straat: " + straat + ", Woonplaats: " + woonplaats + ", ReizigerId: " + reizigerId;
+        return s;
     }
 }

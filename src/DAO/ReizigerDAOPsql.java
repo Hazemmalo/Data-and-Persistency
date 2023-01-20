@@ -29,11 +29,8 @@ public class ReizigerDAOPsql implements ReizigerDAO {
             pst.setString(3, reiziger.getTussenvoegsel());
             pst.setString(4, reiziger.getAchternaam());
             pst.setDate(5, reiziger.getGeboortedatum());
-            int row = pst.executeUpdate();
+            pst.executeUpdate();
 
-            if (row > 0 ) {
-                System.out.println("(Reiziger is toegevoegd)");
-            }
             pst.close();
             return true;
 
@@ -51,16 +48,13 @@ public class ReizigerDAOPsql implements ReizigerDAO {
             String query = "UPDATE reiziger SET reiziger_id = ?, tussenvoegsel = ?, achternaam = ?, geboortedatum = ? WHERE voorletters = ?";
             PreparedStatement pst = conn.prepareStatement(query);
 
-            pst.setInt(1, reiziger.getReiziger_id());
+            pst.setInt(1, reiziger.getId());
             pst.setString(2, reiziger.getTussenvoegsel());
             pst.setString(3, reiziger.getAchternaam());
             pst.setDate(4, reiziger.getGeboortedatum());
             pst.setString(5, reiziger.getVoorletters());
-            int row = pst.executeUpdate();
+            pst.executeUpdate();
 
-            if (row > 0) {
-                System.out.println("(Reiziger is geupdate)");
-            }
             pst.close();
             return true;
 
@@ -78,11 +72,8 @@ public class ReizigerDAOPsql implements ReizigerDAO {
             PreparedStatement pst = conn.prepareStatement(query);
 
             pst.setString(1, reiziger.getVoorletters());
-            int row = pst.executeUpdate();
+            pst.executeUpdate();
 
-            if (row > 0) {
-                System.out.println("(Reiziger is verwijdert)");
-            }
             pst.close();
             return true;
 
@@ -108,7 +99,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
                 String achternm = rs.getString("achternaam");
                 Date gbdatum = rs.getDate("geboortedatum");
 
-                System.out.println("Gegevens van reiziger met ID: " + id + "\n" + "Voorletters:" + voorlttrs + " " + "Tussenvoegsel:" +  " " + tussenvsl + "Achternaam:"
+                System.out.println("Gegevens van reiziger met ID: " + id + "\n" + "Voorletters:" + voorlttrs + " " + "Tussenvoegsel:" +  " " + tussenvsl + " " +  "Achternaam:" + " "
                         + achternm + " " +  "Geboortedatum:" + gbdatum);
             }
             pst.close();

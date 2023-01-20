@@ -5,10 +5,10 @@ import java.sql.*;
 public class Main {
     public static void main(String [] args){
         // verbind maken met database bedrijf
-        String url = "jdbc:postgresql://localhost/ovchip?user=postgres&password=H.azem123";
+        String PGurl = "jdbc:postgresql://localhost/ovchip?user=postgres&password=H.azem123";
 
         try {
-            Connection conn = DriverManager.getConnection(url);
+            Connection conn = DriverManager.getConnection(PGurl);
 
             // Voer een query  uit
             Statement st = conn.createStatement();

@@ -1,38 +1,33 @@
 package Domainklasse;
-
-import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Reiziger {
-    public int reiziger_id;
+    public int reizigerId;
     public String voorletters;
     public String tussenvoegsel;
     public String achternaam;
     public Date geboortedatum;
 
-    public Reiziger (int rz_id, String vl, String tv, String an, Date gd){
-        reiziger_id = rz_id;
-        voorletters = vl;
-        tussenvoegsel = tv;
-        achternaam = an;
-        geboortedatum = gd;
+    private Adres adres;
+
+
+    public Reiziger(int id_reiziger, String vrltrs, String tusvgsl, String achternm, Date gebdtm) {
+        reizigerId = id_reiziger;
+        voorletters = vrltrs;
+        tussenvoegsel = tusvgsl;
+        achternaam = achternm;
+        geboortedatum = gebdtm;
+
     }
 
-    public int getId() {return reiziger_id;}
-
-    public String getNaam() {
-        return voorletters + tussenvoegsel + achternaam;
+    public int getId() {
+        return reizigerId;
     }
 
-    public Date getGeboortedatum() {
-        return geboortedatum;
-    }
-
-    public int getReiziger_id() {
-        return reiziger_id;
-    }
-
-    public void setReiziger_id(int reiziger_id) {
-        this.reiziger_id = reiziger_id;
+    public void setId(int id) {
+        this.reizigerId = id;
     }
 
     public String getVoorletters() {
@@ -59,12 +54,23 @@ public class Reiziger {
         this.achternaam = achternaam;
     }
 
+    public java.sql.Date getGeboortedatum() {return (java.sql.Date) geboortedatum ;}
+
     public void setGeboortedatum(Date geboortedatum) {
         this.geboortedatum = geboortedatum;
     }
 
-    public String toString() {
-        return "Id:" + " " + reiziger_id + " " + "Voorletters:" + " " + voorletters + " " + "Tussenvoegsel:" + " " + tussenvoegsel +
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
+    }
+
+    public String toString(){
+        String s = "Id:" + " " + reizigerId + " " + "Voorletters:" + " " + voorletters + " " + "Tussenvoegsel:" + " " + tussenvoegsel +
                 " " + "Achternaam:" + " " + achternaam + " " + "Geboortedatum:" + " " + geboortedatum;
+        return s;
     }
 }

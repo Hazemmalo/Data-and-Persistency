@@ -1,6 +1,5 @@
 package Domainklasse;
 
-import DAO.AdresDAO;
 import DAO.AdresDAOPsql;
 import DAO.ReizigerDAO;
 import DAO.ReizigerDAOPsql;
@@ -17,11 +16,12 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         getConnection();
-        ReizigerDAOPsql rado = new ReizigerDAOPsql(connection);
-        testReizigerDAO(rado);
+        ReizigerDAOPsql rdao = new ReizigerDAOPsql(connection);
+        testReizigerDAO(rdao);
 
         AdresDAOPsql adao = new AdresDAOPsql(connection);
-        testAdresDAO(adao);
+        testAdresDao(adao);
+
     }
 
     public static void getConnection() throws SQLException {
@@ -63,65 +63,75 @@ public class Main {
         //UPDATE
         //Voorletters moeten hetzelfde zijn bij deze Method!
         System.out.print("[Test] ");
-        rdao.findById(3);
+        rdao.findById(4);
         System.out.println("Is na ReizigerDAO.update(), geupdate naar");
-        String gbdatumLubben = "2001-01-01";
-        Reiziger Lubben = new Reiziger(3, "H", "Van", "Persie", Date.valueOf(gbdatumLubben));
-        rdao.update(Lubben);
+        String gbdatumMemari = "2000-01-01";
+        Reiziger Memari = new Reiziger(4, "F", "", "Memari", Date.valueOf(gbdatumMemari));
+        rdao.update(Memari);
 
 //      FINDBYID
         System.out.println("\n[TEST]");
-        rdao.findById(1);
+        rdao.findById(5);
 
         //FINDBYGEBOORTEDATUM
         System.out.println("\n[TEST]");
-        String geboortedt = "2002-10-22";
-        rdao.findByGbdatum(geboortedt);
+        String gebdatum = "2002-12-03";
+        rdao.findByGbdatum(gebdatum);
     }
 
 
-    private static void testAdresDAO(AdresDAO adao) throws SQLException {
+    private static void testAdresDao(AdresDAOPsql adao) throws SQLException {
         System.out.println("\n---------- Test AdresDAO -------------");
 
-        //FINDALL METHOD/OPHALEN ALLE REIZIGERS
+        // ALLE ADRESSEN OPHALEN, FINDALL METHOD
         List<Adres> adressen = adao.findAll();
-        System.out.println("[Test] AdresDAO.findAll() geeft de volgende adressen:");
+
+        System.out.println("[Test] ReizigerDAO.findAll() geeft de volgende adressen:");
         for (Adres a : adressen) {
             System.out.println(a);
         }
         System.out.println();
 
         //SAVE
-        Adres adres1 = new Adres(8,"3554BV","82","C.Roobolstraat","Utrecht",7);
-        System.out.print("[Test] Eerst " + adressen.size() + " adressen, na AdresDAO.save()");
+        Adres adres1 = new Adres(6, "3765CP", "521", "Smitsweg", "Soest",7);
+        System.out.print("[Test] Eerst " + adressen.size() + " reizigers, na AdresDAO.save() ");
         adao.save(adres1);
         adressen = adao.findAll();
         System.out.println(adressen.size() + " adressen\n");
 
-
         //DELETE
-        //Voorletters moeten hetzelfde zijn bij deze Method!
         System.out.print("[Test] Eerst " + adressen.size() + " adressen, na AdresDAO.delete() ");
         adao.delete(adres1);
         adressen = adao.findAll();
         System.out.println(adressen.size() + " adressen\n");
 
         //UPDATE
-        //AdresId moeten hetzelfde zijn bij deze Method!
         System.out.print("[Test] ");
-        System.out.println("De ingevulde reiziger is na AdresDAO.update(), geupdate naar");
-        Adres Visscherplein = new Adres(1,"3511LX","36","Visscherplein","Utrecht",1);
-        adao.update(Visscherplein);
+        System.out.println("Is na AdresDAO.update(), geupdate naar");
+        Adres jaarbeursplein = new Adres(2, "3521AL", "6", "Jaarbeursplein", "Utrecht", 2);
+        adao.update(jaarbeursplein);
 
-        //FIND ADRES BY REIZIGER
+        //FINDBY_REIZIGER
         System.out.println("\n[TEST]");
-        String gd = "2002-09-17";
-        Reiziger Rijn1 = new Reiziger(1, "G", "van", "Rijn", java.sql.Date.valueOf(gd));
-        adao.findByReiziger(Rijn1);
+        String gedt = "1998-08-11";
+        Reiziger lubben = new Reiziger(3, "H", " ", "Lubben", Date.valueOf(gedt));
+        adao.findByReiziger(lubben);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
-
-
 
 }
